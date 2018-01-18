@@ -11,10 +11,8 @@ namespace NetCore_Angular.Controllers
     [Route("api/Messages")]
     public class MessagesController : Controller
     {
-        public IEnumerable<Models.Message> Get()
-        {
-            return new Models.Message[]
-            {
+        static List<Models.Message> messages = new
+            List<Models.Message> {
                 new Models.Message{
                     owner = "John",
                     text = "hello"
@@ -23,7 +21,21 @@ namespace NetCore_Angular.Controllers
                     owner = "Tim",
                     text = "Hi"
                 }
-            };
+        };
+
+
+
+        [HttpGet]
+        public IEnumerable<Models.Message> Get()
+        {
+            return messages;
+        }
+
+        [HttpPost]
+        public Models.Message Post([FromBody] Models.Message message)
+        {
+            messages.Add(message);
+            return message;
         }
     }
 }

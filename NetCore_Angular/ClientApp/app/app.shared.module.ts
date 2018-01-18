@@ -20,6 +20,7 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 
 import { MessagesComponent } from './components/messages/messages.component';
+import { NewMessageComponent } from './components/forms/message/new-message.component'
 
 import { WebService } from './components/_services/web.service';
 
@@ -31,7 +32,8 @@ import { WebService } from './components/_services/web.service';
         FetchDataComponent,
         HomeComponent,
 
-        MessagesComponent
+        MessagesComponent,
+        NewMessageComponent
     ],
     imports: [
         CommonModule,
