@@ -4,22 +4,23 @@
   "version": "0.0.0",
   "scripts": {
     "test": "karma start ClientApp/test/karma.conf.js",
-    "webpackbuild" : "webpack --config webpack.config.vendor.js"
+    "webpackbuild": "webpack --config webpack.config.vendor.js"
   },
   "devDependencies": {
     "@angular/animations": "5.2.2",
+    "@angular/cdk": "^5.0.4",
+    "@angular/cli": "^1.6.5",
     "@angular/common": "5.2.2",
     "@angular/compiler": "5.2.2",
     "@angular/compiler-cli": "5.2.2",
     "@angular/core": "5.2.2",
     "@angular/forms": "5.2.2",
     "@angular/http": "5.2.2",
+    "@angular/material": "^5.0.4",
     "@angular/platform-browser": "5.2.2",
     "@angular/platform-browser-dynamic": "5.2.2",
     "@angular/platform-server": "5.2.2",
     "@angular/router": "5.2.2",
-    "@angular/cdk": "^5.0.4",
-    "@angular/material": "^5.0.4",
     "@ngtools/webpack": "1.9.5",
     "@types/chai": "4.1.2",
     "@types/jasmine": "2.8.5",
@@ -62,7 +63,5 @@
     "webpack-merge": "4.1.1",
     "zone.js": "0.8.20"
   },
-  "dependencies": {
-    
-  }
+  "dependencies": {}
 }
