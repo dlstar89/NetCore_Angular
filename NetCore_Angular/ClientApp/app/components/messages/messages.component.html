@@ -1,7 +1,7 @@
 ﻿<div *ngFor="let message of webService.messages">
     <mat-card class="card">
-        <mat-card-title>{{message.owner}}</mat-card-title>
+        <mat-card-title class="TitleLink" [routerLink]="['/messages', message.owner]">{{message.owner}}</mat-card-title>
         <mat-card-content>{{message.text}}</mat-card-content>
     </mat-card>
 </div>
-<button mat-raised-button color="primary">TEST</button>
+<!--<button mat-raised-button color="primary">TEST</button>-->

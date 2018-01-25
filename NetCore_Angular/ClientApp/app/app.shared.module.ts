@@ -20,7 +20,9 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 
 import { MessagesComponent } from './components/messages/messages.component';
-import { NewMessageComponent } from './components/forms/message/new-message.component'
+import { NewMessageComponent } from './components/forms/message/new-message.component';
+
+import { NavComponent } from './components/navmenu/nav.component';
 
 import { WebService } from './components/_services/web.service';
 
@@ -33,7 +35,9 @@ import { WebService } from './components/_services/web.service';
         HomeComponent,
 
         MessagesComponent,
-        NewMessageComponent
+        NewMessageComponent,
+
+        NavComponent
     ],
     imports: [
         CommonModule,
@@ -52,7 +56,14 @@ import { WebService } from './components/_services/web.service';
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
-            { path: '**', redirectTo: 'home' }
+
+            { path: 'messages', component: MessagesComponent },
+            { path: 'messages/:name', component: MessagesComponent },
+
+
+            { path: '**', redirectTo: 'home' },
+
+            
         ])
     ],
     providers: [
