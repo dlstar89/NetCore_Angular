@@ -26,6 +26,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { NavComponent } from './components/navmenu/nav.component';
 
 import { WebService } from './components/_services/web.service';
+import { AuthService } from './components/_services/auth.service';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,7 @@ import { WebService } from './components/_services/web.service';
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        
+
         NavComponent,
         MessagesComponent,
         NewMessageComponent,
@@ -68,7 +69,8 @@ import { WebService } from './components/_services/web.service';
         ])
     ],
     providers: [
-        WebService
+        WebService,
+        AuthService
     ]
 })
 export class AppModuleShared {

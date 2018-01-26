@@ -7,7 +7,8 @@ namespace NetCore_Angular.Models
 {
     public class Message
     {
-        public string owner { get; set; }
-        public string text { get; set; }
+        public string Id { get; set; }
+        public string Owner { get; set; }
+        public string Text { get; set; }
     }
 }
