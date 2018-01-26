@@ -1,5 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -8,7 +9,7 @@ export class AuthService {
     NAME_KEY = 'name';
     TOKEN_KEY = 'token';
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private router: Router) { }
 
     get name() {
         return localStorage.getItem(this.NAME_KEY);
@@ -18,16 +19,34 @@ export class AuthService {
         return !!localStorage.getItem(this.TOKEN_KEY);
     }
 
+    login(loginData: any) {
+        this.http.post(this.BASE_URL + '/login', loginData).subscribe(res => {
+            console.log(res);
+            this.authenticate(res);
+        })
+    }
+
     register(user: any) {
         delete user.confirmPassword;
         this.http.post(this.BASE_URL + '/register', user).subscribe(res => {
-            localStorage.setItem(this.TOKEN_KEY, res.json().token)
-            localStorage.setItem(this.NAME_KEY, res.json().firstName)
+            this.authenticate(res);
         });
     }
 
     logout() {
         localStorage.removeItem(this.NAME_KEY);
         localStorage.removeItem(this.TOKEN_KEY);
+        this.router.navigate(['/']);
+    }
+
+    authenticate(res: any) {
+        var authResponse = res.json();
+
+        if (!authResponse.token)
+            return;
+
+        localStorage.setItem(this.TOKEN_KEY, res.json().token)
+        localStorage.setItem(this.NAME_KEY, res.json().firstName)
+        this.router.navigate(['/']);
     }
 }

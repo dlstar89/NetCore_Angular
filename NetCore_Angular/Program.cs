@@ -55,6 +55,8 @@ namespace NetCore_Angular
                 Text = "Hi"
             });
 
+            context.Users.Add(new Models.User { Email = "a", FirstName = "a", Password = "a" });
+
             context.SaveChanges();
         }
     }
