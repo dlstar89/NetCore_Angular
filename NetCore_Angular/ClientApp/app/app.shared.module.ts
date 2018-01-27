@@ -23,11 +23,13 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { NewMessageComponent } from './components/forms/message/new-message.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { UserComponent } from './components/user/user.component';
 
 import { NavComponent } from './components/navmenu/nav.component';
 
 import { WebService } from './components/_services/web.service';
 import { AuthService } from './components/_services/auth.service';
+
 
 @NgModule({
     declarations: [
@@ -41,7 +43,8 @@ import { AuthService } from './components/_services/auth.service';
         MessagesComponent,
         NewMessageComponent,
         RegisterComponent,
-        LoginComponent
+        LoginComponent,
+        UserComponent
     ],
     imports: [
         CommonModule,
@@ -57,18 +60,22 @@ import { AuthService } from './components/_services/auth.service';
         MatToolbarModule,
 
         RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
+            //{ path: '', redirectTo: 'home', pathMatch: 'full' },
+            //{ path: 'home', component: HomeComponent },
+            //{ path: 'counter', component: CounterComponent },
+            //{ path: 'fetch-data', component: FetchDataComponent },
 
+            { path: '', component: HomeComponent },
             { path: 'messages', component: MessagesComponent },
             { path: 'messages/:name', component: MessagesComponent },
 
-            { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
+            { path: 'login', component: LoginComponent },
+            
+            { path: 'user', component: UserComponent },
 
-            { path: '**', redirectTo: 'home' },
+            { path: '**', redirectTo: '' },
+            //{ path: '**', redirectTo: 'home' },
         ])
     ],
     providers: [

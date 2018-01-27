@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace NetCore_Angular.Controllers
 {
@@ -39,8 +42,7 @@ namespace NetCore_Angular.Controllers
             if (user == null)
                 return NotFound("Email or Password incorrect");
 
-            //return Ok(CreateJwtPacket(user));
-            return null;
+            return Ok(CreateJwtPacket(user));
         }
 
         [HttpPost("register")]
@@ -54,7 +56,17 @@ namespace NetCore_Angular.Controllers
 
         JwtPacket CreateJwtPacket(Models.User user)
         {
-            var jwt = new JwtSecurityToken();
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret phrase"));
+            var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
+
+
+            var claims = new Claim[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub,user.Id)
+            };
+
+            var jwt = new JwtSecurityToken(claims: claims, signingCredentials: signingCredentials);
+
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
             return new JwtPacket() { Token = encodedJwt, FirstName = user.FirstName };
